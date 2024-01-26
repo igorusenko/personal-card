@@ -4,16 +4,3 @@
 p {
   margin: 0 !important;
 }
-
-body {
-  background: linear-gradient(141deg, #ffa000, #00f2ff, #ff8d8d, #a3ffd3, #a3d6ff, #cea3ff);
-  background-size: 1200% 1200%;
-
-  animation: gradientAnimation 35s ease infinite;
-}
-
-@keyframes gradientAnimation {
-  0%{background-position:2% 0%}
-  50%{background-position:99% 100%}
-  100%{background-position:2% 0%}
-}
