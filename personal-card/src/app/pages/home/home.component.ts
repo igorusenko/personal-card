@@ -14,14 +14,14 @@ import {animate, style, transition, trigger} from "@angular/animations";
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  animations: [
-    trigger('changeBackgroundColor', [
-      transition(':enter', [
-        style({ backgroundColor: '#000000' }),
-        animate('3s', style({ backgroundColor: '#cbcbcb' }))
-      ])
-    ])
-  ]
+  // animations: [
+  //   trigger('changeBackgroundColor', [
+  //     transition(':enter', [
+  //       style({ backgroundColor: '#000000' }),
+  //       animate('3s', style({ backgroundColor: '#cbcbcb' }))
+  //     ])
+  //   ])
+  // ]
 })
 export class HomeComponent {
 
