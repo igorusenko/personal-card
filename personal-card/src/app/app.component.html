@@ -1,6 +1,8 @@
-<div class="main-layout">
+<div class="main-layout d-flex flex-column min-vh-100">
 
-  <app-header></app-header>
+  <div class="header-container">
+    <app-header></app-header>
+  </div>
 
   <div class="container-fluid">
     <router-outlet>
@@ -8,6 +10,8 @@
     </router-outlet>
   </div>
 
-  <app-footer></app-footer>
+  <div class="footer-container">
+    <app-footer></app-footer>
+  </div>
 
 </div>
