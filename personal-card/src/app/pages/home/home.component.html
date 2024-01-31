@@ -10,7 +10,7 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-lg-6 text-white position-sticky">
+        <div class="col-lg-6 text-white">
 
           <div>
             <h1 class="title">Usenko Igor</h1>
@@ -19,23 +19,90 @@
           </div>
 
           <div class="navbar flex-column align-items-start">
-            <div *ngFor="let navItem of navItems" [routerLink]='"."' [fragment]="navItem.toLowerCase()" class="block-with-line">
-              <span [class.active]="activeRoute === navItem.toLowerCase()" class="line"></span> <span class="regular-text">{{navItem}}</span>
+            <div (click)="scrollTo(navItem.name)" *ngFor="let navItem of navItems" [routerLink]='"."' [fragment]="navItem.name"
+                 class="block-with-line">
+              <span [class.active]="activeRoute === navItem.name" class="line"></span> <span
+              class="regular-text">{{navItem.name}}</span>
             </div>
           </div>
 
         </div>
 
-        <div class="col-lg-6 regular-text">
-          <p>Back in 2012, I decided to try my hand at creating custom Tumblr themes and tumbled head first into the
-            rabbit hole of coding and web development. Fast-forward to today, and I’ve had the privilege of building
-            software for an advertising agency, a start-up, a student-led design studio, and a huge corporation.</p>
-          <p> My main focus these days is building products and leading projects for our clients at Upstatement. I most
-            enjoy building software in the sweet spot where design and engineering meet — things that look good but are
-            also built well under the hood. In my free time, I've also released an online video course that covers
-            everything you need to know to build a web app with the Spotify API.</p>
-          <p> When I’m not at the computer, I’m usually rock climbing, reading, hanging out with my wife and two cats,
-            or running around Hyrule searching for Korok seeds</p>
+        <div class="col-lg-6 columns-container">
+
+          <section id="about" class="column-element regular-text">
+            <p>Back in 2012, I decided to try my hand at creating custom Tumblr themes and tumbled head first into the
+              rabbit hole of coding and web development. Fast-forward to today, and I’ve had the privilege of building
+              software for an advertising agency, a start-up, a student-led design studio, and a huge corporation.</p>
+            <p> My main focus these days is building products and leading projects for our clients at Upstatement. I
+              most
+              enjoy building software in the sweet spot where design and engineering meet — things that look good but
+              are
+              also built well under the hood. In my free time, I've also released an online video course that covers
+              everything you need to know to build a web app with the Spotify API.</p>
+            <p> When I’m not at the computer, I’m usually rock climbing, reading, hanging out with my wife and two cats,
+              or running around Hyrule searching for Korok seeds</p>
+          </section>
+
+          <section id="experience" class="experience-block">
+
+            <div *ngFor="let experience of experienceItems; index as i"
+                 [class.active]="i === activeExperience"
+                 [class.opacity]="(activeExperience || activeExperience === 0) && i !== activeExperience"
+                 (mouseenter)="activeExperience = i"
+                 (mouseleave)="activeExperience = null"
+                 class="experience-card regular-text"
+            >
+
+              <div class="experience-date-block col-lg-2">
+                {{experience.period}}
+              </div>
+
+              <div class="experience-info-block no-margins col-lg-10">
+
+                <div class="experience-title-block">
+                  <p class="subtitle text-white">{{experience.role}}</p>
+                  <p>{{experience.grade}}</p>
+                </div>
+
+                <div class="experience-description-block">
+                  {{experience.description}}
+                </div>
+
+                <div class="instruments-block">
+                    <div class="instrument">
+
+                    </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <p class="subtitle text-white">View Full Resume</p>
+
+          </section>
+
+          <section id="projects" class="projects-block regular-text">
+
+            <div *ngFor="let project of projectItems; index as i"
+                 [class.active]="i === activeProject"
+                 [class.opacity]="(activeProject || activeProject === 0) && i !== activeProject"
+                 (mouseenter)="activeProject = i"
+                 (mouseleave)="activeProject = null"
+                 class="project-item">
+              <img [src]="project.image" class="col-lg-2">
+              <div class="project-description col-lg-10">
+                <p class="subtitle text-white">{{project.title}}</p>
+                <p class="regular-text">{{project.description}}</p>
+              </div>
+            </div>
+
+            <p class="subtitle text-white">View Full List Projects</p>
+
+          </section>
+
+
         </div>
 
       </div>

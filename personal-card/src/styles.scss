@@ -5,6 +5,12 @@ p {
   margin: 0 0 1rem 0 !important;
 }
 
+.no-margins {
+  p {
+    margin: 0 !important;
+  }
+}
+
 :root {
   //cursor: none;
   --cursorX: 50vw;
@@ -17,12 +23,12 @@ p {
   height: 100%;
   position: fixed;
   pointer-events: none;
-  background: radial-gradient(
-      circle 25vmax at var(--cursorX) var(--cursorY),
-      rgba(0,0,0,.1) 10%,
-      rgba(0,0,0,.2) 80%,
-      rgba(0,0,0,.3) 100%
-  )
+  //background: radial-gradient(
+  //    circle 25vmax at var(--cursorX) var(--cursorY),
+  //    rgba(0,0,0,.1) 10%,
+  //    rgba(0,0,0,.2) 80%,
+  //    rgba(0,0,0,.3) 100%
+  //);
 }
 * {
   letter-spacing: 1.5px;
