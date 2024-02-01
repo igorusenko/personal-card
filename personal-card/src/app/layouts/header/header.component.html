@@ -1,14 +1,16 @@
-<header @slideInOut class="custom-header d-flex flex-wrap justify-content-center py-3">
-  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-    <span class="fs-4 text-white">My portfolio</span>
-  </a>
+<div class="header-block">
+  <div>
+    <h1 class="title">Usenko Igor</h1>
+    <h2 class="subtitle">Frontend Angular Developer</h2>
+    <p class="regular-text">I build pixel-perfect, engaging, and <br> accessible digital experiences.</p>
+  </div>
 
-<!--  <ul class="nav nav-pills">-->
-<!--    <li class="nav-item"><a href="#" class="nav-link active" кщгеук aria-current="page">Home</a></li>-->
-<!--    <li class="nav-item"><a href="#" class="nav-link">Features</a></li>-->
-<!--    <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>-->
-<!--    <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>-->
-<!--    <li class="nav-item"><a href="#" class="nav-link">About</a></li>-->
-<!--  </ul>-->
-</header>
+  <div class="navbar flex-column align-items-start">
+    <div (click)="scrollTo(navItem.name)" *ngFor="let navItem of navItems" [routerLink]='"."'
+         [fragment]="navItem.name"
+         class="block-with-line">
+      <span [class.active]="activeRoute === navItem.name" class="line"></span> <span
+      class="regular-text">{{navItem.name.toUpperCase()}}</span>
+    </div>
+  </div>
+</div>

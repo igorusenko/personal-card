@@ -1,0 +1,12 @@
+<div
+  [class.active]="active"
+  [class.opacity]="opacity"
+  (mouseenter)="mouseEnter.emit(true)"
+  (mouseleave)="mouseLeave.emit(true)"
+  class="project-item">
+  <img [src]="project.image" class="col-lg-2">
+  <div class="project-description col-lg-10">
+    <p class="subtitle text-white">{{project.title}}</p>
+    <p class="regular-text">{{project.description}}</p>
+  </div>
+</div>

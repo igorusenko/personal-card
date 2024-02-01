@@ -1,5 +1,54 @@
-.custom-header {
-  border-bottom-left-radius: 0.7rem;
-  border-bottom-right-radius: 0.7rem;
-  //box-shadow: 5px 5px 10px #888888;
+.header-block {
+  position: sticky;
+  top: 0;
+  padding: 6rem  0 0 6rem;
+  align-self: flex-start;
+
+  .navbar {
+    padding-top: 5rem;
+
+    .block-with-line {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 0;
+      cursor: pointer;
+
+      .regular-text {
+        font-size: 12px;
+      }
+
+      .line {
+        display: inline-block;
+        width: 30px;
+        height: 1px;
+        background-color: rgb(148, 163, 184);
+        margin-right: 1rem;
+        line-height: 1px;
+        font-size: 1px;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+        transition-duration: .15s;
+
+        &.active {
+          width: 60px;
+          background-color: white;
+        }
+      }
+
+      .regular-text {
+        font-weight: 800;
+      }
+
+      &:hover {
+        .line {
+          width: 60px;
+          background-color: white;
+        }
+
+        .regular-text {
+          color: #E2E8F0;
+        }
+      }
+    }
+  }
 }

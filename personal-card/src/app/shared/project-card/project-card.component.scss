@@ -1,0 +1,28 @@
+.project-item {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color, opacity 0.3s ease;
+
+  img {
+    //width: 120px;
+    max-height: 70px;
+    padding: 0;
+  }
+
+  &.active {
+    --tw-text-opacity: 1;
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: 0.5rem;
+
+    .project-description .subtitle {
+      color: rgb(94 234 212/var(--tw-text-opacity)) !important;
+    }
+  }
+
+  &.opacity {
+    opacity: 0.2;
+  }
+}
