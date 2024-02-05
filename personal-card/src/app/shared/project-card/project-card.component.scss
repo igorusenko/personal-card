@@ -6,6 +6,19 @@
   cursor: pointer;
   transition: background-color, opacity 0.3s ease;
 
+  .project-description {
+    .instruments {
+      .instrument {
+        font-size: .75rem;
+        text-align: center;
+        --tw-text-opacity: 1;
+        padding: 0.25rem 0.75rem;
+        background-color: rgba(45, 212, 191, .1);
+        color: rgb(94 234 212/var(--tw-text-opacity));
+      }
+    }
+  }
+
   img {
     //width: 120px;
     max-height: 70px;

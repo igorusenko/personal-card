@@ -3,14 +3,14 @@
   [class.opacity]="opacity"
   (mouseenter)="mouseEnter.emit(true)"
   (mouseleave)="mouseLeave.emit(true)"
-  class="experience-card regular-text"
+  class="experience-card regular-text row"
 >
 
-  <div class="experience-date-block col-lg-2">
+  <div class="experience-date-block col-lg-3">
     {{experience.period}}
   </div>
 
-  <div class="experience-info-block no-margins col-lg-10">
+  <div class="experience-info-block no-margins col-lg-9">
 
     <div class="experience-title-block">
       <p class="subtitle text-white">{{experience.role}}</p>

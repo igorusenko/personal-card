@@ -52,3 +52,11 @@
     }
   }
 }
+@media screen and (max-width: 980px){
+  .header-block {
+    padding: 0;
+  }
+  .navbar {
+    display: none;
+  }
+}

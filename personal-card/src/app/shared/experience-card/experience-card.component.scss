@@ -1,13 +1,13 @@
 .experience-card {
   display: flex;
   align-items: baseline;
-  gap: 1rem;
   padding: 1rem;
   cursor: pointer;
   transition: background-color, opacity 0.3s ease;
 
   .experience-date-block {
     white-space: nowrap;
+    font-size: .8rem;
   }
 
   .experience-info-block {

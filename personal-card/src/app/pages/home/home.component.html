@@ -1,64 +1,65 @@
-<div (mousemove)="glowingCursor($event)" (touchmove)="glowingCursor($event)"
-     class="main-layout d-flex flex-column min-vh-100">
+<div appGlowingCursor class="main-layout d-flex flex-column min-vh-100">
 
   <div class="d-flex container">
-    <div class="col-lg-6 text-white header-block">
+    <div class="row">
+      <div class="col-lg-6 text-white header-block">
 
-      <app-header></app-header>
+        <app-header></app-header>
 
-    </div>
+      </div>
 
-    <div id="about" class="col-lg-6 container-fluid">
+      <div id="about" class="col-lg-6 container-fluid">
 
-      <div class="row">
-        <div class="columns-container">
+        <div class="row">
+          <div class="columns-container">
 
-          <section class="column-element regular-text">
-            <p>Back in 2012, I decided to try my hand at creating custom Tumblr themes and tumbled head first into the
-              rabbit hole of coding and web development. Fast-forward to today, and I’ve had the privilege of building
-              software for an advertising agency, a start-up, a student-led design studio, and a huge corporation.</p>
-            <p> My main focus these days is building products and leading projects for our clients at Upstatement. I
-              most
-              enjoy building software in the sweet spot where design and engineering meet — things that look good but
-              are
-              also built well under the hood. In my free time, I've also released an online video course that covers
-              everything you need to know to build a web app with the Spotify API.</p>
-            <p> When I’m not at the computer, I’m usually rock climbing, reading, hanging out with my wife and two cats,
-              or running around Hyrule searching for Korok seeds</p>
-          </section>
+            <section class="column-element regular-text">
+              <p>Hello, back in 2020, I decided to test my skills in creating my own mini websites using Html / Css / JS,
+                and from that moment on, I plunged headfirst into the rabbit hole of coding and web development. Fast
+                forward to today: I have been honored with the opportunity to develop software for government projects,
+                complex systems, and HRM applications.</p>
+              <p> Currently, my focus lies in crafting products and implementing large-scale government projects that
+                demand exceptional quality, as these projects represent the face of the country. What I enjoy most is
+                creating software where design meets engineering — things that look good but are also well-engineered
+                under the hood. In my free time, I also explore new technologies and try to implement them in my pet
+                projects.</p>
+              <p> When I'm not at the computer, you'll usually find me at the gym, playing basketball, walking my
+                dachshund, or spending time with family.</p>
+            </section>
 
-          <section id="experience" class="experience-block">
+            <section id="experience" class="experience-block">
 
-            <app-experience-card
-              *ngFor="let experience of experienceItems; index as i"
-              [experience]="experience"
-              [active]="i === activeExperience"
-              [opacity]="Boolean((activeExperience || activeExperience === 0) && i !== activeExperience)"
-              (mouseEnter)="activeExperience = i"
-              (mouseLeave)="activeExperience = null"
-            ></app-experience-card>
+              <app-experience-card
+                *ngFor="let experience of experienceItems; index as i"
+                [experience]="experience"
+                [active]="i === activeExperience"
+                [opacity]="Boolean((activeExperience || activeExperience === 0) && i !== activeExperience)"
+                (mouseEnter)="activeExperience = i"
+                (mouseLeave)="activeExperience = null"
+              ></app-experience-card>
 
-            <p class="subtitle text-white">View Full Resume</p>
+<!--              <p class="subtitle text-white">View Full Resume</p>-->
 
-          </section>
+            </section>
 
-          <section id="projects" class="projects-block regular-text">
+            <section id="projects" class="projects-block regular-text">
 
-            <app-project-card
-              *ngFor="let project of projectItems; index as i"
-              [project]="project"
-              [active]="i === activeProject"
-              [opacity]="Boolean((activeProject || activeProject === 0) && i !== activeProject)"
-              (mouseEnter)="activeProject = i"
-              (mouseLeave)="activeProject = null"
-            ></app-project-card>
+              <app-project-card
+                *ngFor="let project of projectItems; index as i"
+                [project]="project"
+                [active]="i === activeProject"
+                [opacity]="Boolean((activeProject || activeProject === 0) && i !== activeProject)"
+                (mouseEnter)="activeProject = i"
+                (mouseLeave)="activeProject = null"
+              ></app-project-card>
 
-            <p class="subtitle text-white">View Full List Projects</p>
+<!--              <p class="subtitle text-white">View Full List Projects</p>-->
 
-          </section>
+            </section>
+
+          </div>
 
         </div>
-
       </div>
     </div>
   </div>

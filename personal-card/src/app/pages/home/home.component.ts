@@ -12,6 +12,7 @@ import {ProjectCardComponent} from "../../shared/project-card/project-card.compo
 import {Store} from "@ngrx/store";
 import {ExperienceState} from "../../core/interfaces/state.interface";
 import {loadExperience} from "../../core/ngRx/experience/actions/experience-actions";
+import {GlowingDirective} from "../../core/directives/glowing.directive";
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ import {loadExperience} from "../../core/ngRx/experience/actions/experience-acti
     RouterLinkActive,
     ExperienceCardComponent,
     ProjectCardComponent,
+    GlowingDirective,
   ],
   providers: [MockDataService],
   templateUrl: './home.component.html',

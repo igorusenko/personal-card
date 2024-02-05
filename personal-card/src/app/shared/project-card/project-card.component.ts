@@ -1,11 +1,14 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IExperience} from "../../core/interfaces/experience.interface";
 import {IProject} from "../../core/interfaces/projects.interface";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [],
+  imports: [
+    NgForOf
+  ],
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.scss'
 })

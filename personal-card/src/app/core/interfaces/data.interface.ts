@@ -1,4 +1,5 @@
 export interface DataInterface {
   id: number,
-  description: string
+  description: string,
+  instruments: Array<string>
 }

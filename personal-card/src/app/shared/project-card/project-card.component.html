@@ -8,5 +8,10 @@
   <div class="project-description col-lg-10">
     <p class="subtitle text-white">{{project.title}}</p>
     <p class="regular-text">{{project.description}}</p>
+    <div class="instruments d-flex gap-2 flex-wrap">
+      <div *ngFor="let instrument of project.instruments" class="instrument rounded-5">
+        {{instrument}}
+      </div>
+    </div>
   </div>
 </div>
