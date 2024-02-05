@@ -9,7 +9,8 @@ export class ExperienceEffects {
   loadExperience$ = createEffect(() => this.actions$.pipe(
     ofType(loadExperience),
     switchMap(() => this.dataService.getExperience()
-      .pipe(map(experience => loadExperienceSuccess({experience})),
+      .pipe (
+        map(experience => loadExperienceSuccess({experience})),
         catchError(error => of(loadExperienceFailure({error})))
         )
     )

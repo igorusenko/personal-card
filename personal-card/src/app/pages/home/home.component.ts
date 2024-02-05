@@ -1,8 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, importProvidersFrom, OnInit} from '@angular/core';
 import {FooterComponent} from "../../layouts/footer/footer.component";
 import {HeaderComponent} from "../../layouts/header/header.component";
-import {ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {animate, style, transition, trigger} from "@angular/animations";
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NgForOf} from "@angular/common";
 import {MockDataService} from "../../core/services/mock/mock-data.service";
 import {forkJoin} from "rxjs";
@@ -10,6 +9,9 @@ import {IExperience} from "../../core/interfaces/experience.interface";
 import {IProject} from "../../core/interfaces/projects.interface";
 import {ExperienceCardComponent} from "../../shared/experience-card/experience-card.component";
 import {ProjectCardComponent} from "../../shared/project-card/project-card.component";
+import {Store} from "@ngrx/store";
+import {ExperienceState} from "../../core/interfaces/state.interface";
+import {loadExperience} from "../../core/ngRx/experience/actions/experience-actions";
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,7 @@ import {ProjectCardComponent} from "../../shared/project-card/project-card.compo
     NgForOf,
     RouterLinkActive,
     ExperienceCardComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
   ],
   providers: [MockDataService],
   templateUrl: './home.component.html',
@@ -37,12 +39,18 @@ export class HomeComponent implements OnInit{
   onScroll(event: any) {
     // this.updateFragment();
   }
-  constructor(private dataService: MockDataService, private router: Router
+  constructor(private dataService: MockDataService,
+              private router: Router,
+              private experienceStore: Store<ExperienceState>
   ) {
 
   }
 
   ngOnInit() {
+    this.experienceStore.dispatch(loadExperience());
+    this.experienceStore.subscribe(x => {
+      console.log(x)
+    })
     this.getData();
   }
 

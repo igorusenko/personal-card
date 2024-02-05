@@ -1,11 +1,5 @@
 import { isDevMode } from '@angular/core';
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector, createReducer,
-  createSelector,
-  MetaReducer, on
-} from '@ngrx/store';
+import {createReducer, MetaReducer, on} from '@ngrx/store';
 import {ExperienceState} from "../../../interfaces/state.interface";
 import {loadExperience, loadExperienceFailure, loadExperienceSuccess} from "../actions/experience-actions";
 
