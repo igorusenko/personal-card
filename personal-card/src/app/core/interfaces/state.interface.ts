@@ -2,12 +2,9 @@ import {IExperience} from "./experience.interface";
 import {IProject} from "./projects.interface";
 
 export interface AppState {
-  loading: boolean;
-  error: any;
-}
-
-export interface ExperienceState extends AppState{
-  experience: Array<IExperience>;
+  experienceData: IExperience[],
+  loading: boolean,
+  error: null
 }
 
 export interface ProjectsState extends AppState{

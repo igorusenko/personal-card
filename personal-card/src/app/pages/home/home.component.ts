@@ -10,9 +10,9 @@ import {IProject} from "../../core/interfaces/projects.interface";
 import {ExperienceCardComponent} from "../../shared/experience-card/experience-card.component";
 import {ProjectCardComponent} from "../../shared/project-card/project-card.component";
 import {Store} from "@ngrx/store";
-import {ExperienceState} from "../../core/interfaces/state.interface";
 import {loadExperience} from "../../core/ngRx/experience/actions/experience-actions";
 import {GlowingDirective} from "../../core/directives/glowing.directive";
+import {AppState} from "../../core/interfaces/state.interface";
 
 @Component({
   selector: 'app-home',
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit{
   }
   constructor(private dataService: MockDataService,
               private router: Router,
-              private experienceStore: Store<ExperienceState>
+              private experienceStore: Store<AppState>
   ) {
 
   }
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit{
   ngOnInit() {
     this.experienceStore.dispatch(loadExperience());
     this.experienceStore.subscribe(x => {
-      console.log(x)
+      this.experienceItems = x.experienceData;
     })
     this.getData();
   }
