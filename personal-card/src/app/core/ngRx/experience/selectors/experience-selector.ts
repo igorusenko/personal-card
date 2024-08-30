@@ -1,19 +1,19 @@
 import { createSelector } from '@ngrx/store';
-import {AppState, ExperienceState} from '../../../interfaces/state.interface';
+import {ExperienceState, ExperienceStateModel} from '../../../interfaces/state.interface';
 
-export const selectExperienceState = (state: AppState) => state.experience;
+export const selectExperienceState = (state: ExperienceState) => state.experience;
 
 export const selectExperienceData = createSelector(
   selectExperienceState,
-  (state: ExperienceState) => state.experienceData
+  (state: ExperienceStateModel) => state.experienceData
 );
 
 export const selectLoading = createSelector(
   selectExperienceState,
-  (state: ExperienceState) => state.loading
+  (state: ExperienceStateModel) => state.loading
 );
 
 export const selectError = createSelector(
   selectExperienceState,
-  (state: ExperienceState) => state.error
+  (state: ExperienceStateModel) => state.error
 );

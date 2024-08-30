@@ -12,7 +12,7 @@ import {ProjectCardComponent} from "../../shared/project-card/project-card.compo
 import {Store} from "@ngrx/store";
 import {loadExperience} from "../../core/ngRx/experience/actions/experience-actions";
 import {GlowingDirective} from "../../core/directives/glowing.directive";
-import {AppState} from "../../core/interfaces/state.interface";
+import {ExperienceState} from "../../core/interfaces/state.interface";
 import {
   selectError,
   selectExperienceData,
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit{
     // this.updateFragment();
   }
   constructor(private router: Router,
-              private experienceStore: Store<AppState>
+              private experienceStore: Store<ExperienceState>
   ) {
     this.experienceData$ = this.experienceStore.select(selectExperienceData);
   }

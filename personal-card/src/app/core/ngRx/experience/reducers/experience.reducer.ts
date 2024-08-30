@@ -1,14 +1,15 @@
 import { isDevMode } from '@angular/core';
 import {createReducer, MetaReducer, on} from '@ngrx/store';
-import {AppState} from "../../../interfaces/state.interface";
+import {ExperienceState} from "../../../interfaces/state.interface";
 import {loadExperience, loadExperienceFailure, loadExperienceSuccess} from "../actions/experience-actions";
 
-export const initialState: AppState = {
+export const initialState: ExperienceState = {
   experience: {
       experienceData: [],
       loading: false,
       error: null
   },
+
 };
 
 export const experienceReducer = createReducer(
@@ -27,4 +28,4 @@ export const experienceReducer = createReducer(
   }))
 );
 
-export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [] : [];
+export const metaReducers: MetaReducer<ExperienceState>[] = isDevMode() ? [] : [];
