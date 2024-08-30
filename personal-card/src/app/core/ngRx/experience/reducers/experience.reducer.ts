@@ -9,7 +9,6 @@ export const initialState: ExperienceState = {
       loading: false,
       error: null
   },
-
 };
 
 export const experienceReducer = createReducer(

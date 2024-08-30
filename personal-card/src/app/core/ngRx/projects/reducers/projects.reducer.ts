@@ -3,8 +3,8 @@ import {createReducer, MetaReducer, on} from '@ngrx/store';
 import {ExperienceState, ProjectsState} from "../../../interfaces/state.interface";
 import {loadProjects, loadProjectsFailure, loadProjectsSuccess} from "../actions/projects.actions";
 
-export const initialState: ExperienceState<ProjectsState> = {
-  data: {
+export const initialState: ProjectsState = {
+  projects: {
     projectsData: [],
     loading: false,
     error: null

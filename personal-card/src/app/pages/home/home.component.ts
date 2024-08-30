@@ -12,12 +12,14 @@ import {ProjectCardComponent} from "../../shared/project-card/project-card.compo
 import {Store} from "@ngrx/store";
 import {loadExperience} from "../../core/ngRx/experience/actions/experience-actions";
 import {GlowingDirective} from "../../core/directives/glowing.directive";
-import {ExperienceState} from "../../core/interfaces/state.interface";
+import {ExperienceState, ProjectsState} from "../../core/interfaces/state.interface";
 import {
   selectError,
   selectExperienceData,
   selectLoading
 } from "../../core/ngRx/experience/selectors/experience-selector";
+import {selectProjectsData} from "../../core/ngRx/projects/selectors/projects-selector";
+import {loadProjects} from "../../core/ngRx/projects/actions/projects.actions";
 
 @Component({
   selector: 'app-home',
@@ -39,6 +41,7 @@ import {
 })
 export class HomeComponent implements OnInit{
   experienceData$: Observable<IExperience[]>;
+  projectsData$: Observable<IProject[]>;
 
   experienceItems: Array<IExperience> = [];
   projectItems: Array<IProject> = [];
@@ -49,9 +52,11 @@ export class HomeComponent implements OnInit{
     // this.updateFragment();
   }
   constructor(private router: Router,
-              private experienceStore: Store<ExperienceState>
+              private experienceStore: Store<ExperienceState>,
+              private projectsStore: Store<ProjectsState>,
   ) {
-    this.experienceData$ = this.experienceStore.select(selectExperienceData);
+    this.experienceData$ = experienceStore.select(selectExperienceData);
+    this.projectsData$ = projectsStore.select(selectProjectsData);
   }
 
   ngOnInit() {
@@ -62,13 +67,17 @@ export class HomeComponent implements OnInit{
   getExperience(): void {
     this.experienceStore.dispatch(loadExperience());
 
-    this.experienceData$.subscribe(x => {
-      this.experienceItems = x;
+    this.experienceData$.subscribe(experience => {
+      this.experienceItems = experience;
     })
   }
 
   getProjects(): void {
+    this.projectsStore.dispatch(loadProjects());
 
+    this.projectsData$.subscribe(projects => {
+      this.projectItems = projects;
+    })
   }
 
 
