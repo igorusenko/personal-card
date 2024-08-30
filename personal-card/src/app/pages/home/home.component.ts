@@ -4,7 +4,7 @@ import {HeaderComponent} from "../../layouts/header/header.component";
 import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NgForOf} from "@angular/common";
 import {MockDataService} from "../../core/services/mock/mock-data.service";
-import {forkJoin} from "rxjs";
+import {forkJoin, Observable} from "rxjs";
 import {IExperience} from "../../core/interfaces/experience.interface";
 import {IProject} from "../../core/interfaces/projects.interface";
 import {ExperienceCardComponent} from "../../shared/experience-card/experience-card.component";
@@ -13,6 +13,11 @@ import {Store} from "@ngrx/store";
 import {loadExperience} from "../../core/ngRx/experience/actions/experience-actions";
 import {GlowingDirective} from "../../core/directives/glowing.directive";
 import {AppState} from "../../core/interfaces/state.interface";
+import {
+  selectError,
+  selectExperienceData,
+  selectLoading
+} from "../../core/ngRx/experience/selectors/experience-selector";
 
 @Component({
   selector: 'app-home',
@@ -33,6 +38,8 @@ import {AppState} from "../../core/interfaces/state.interface";
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit{
+  experienceData$: Observable<IExperience[]>;
+
   experienceItems: Array<IExperience> = [];
   projectItems: Array<IProject> = [];
   activeExperience: number | null = null;
@@ -41,26 +48,27 @@ export class HomeComponent implements OnInit{
   onScroll(event: any) {
     // this.updateFragment();
   }
-  constructor(private dataService: MockDataService,
-              private router: Router,
+  constructor(private router: Router,
               private experienceStore: Store<AppState>
   ) {
-
+    this.experienceData$ = this.experienceStore.select(selectExperienceData);
   }
 
   ngOnInit() {
-    this.experienceStore.dispatch(loadExperience());
-    this.experienceStore.subscribe(x => {
-      this.experienceItems = x.experienceData;
-    })
-    this.getData();
+    this.getExperience();
+    this.getProjects();
   }
 
-  getData(): void {
-    forkJoin([this.dataService.getExperience(), this.dataService.getProjects()]).subscribe(x => {
-      this.experienceItems = x[0];
-      this.projectItems = x[1];
+  getExperience(): void {
+    this.experienceStore.dispatch(loadExperience());
+
+    this.experienceData$.subscribe(x => {
+      this.experienceItems = x;
     })
+  }
+
+  getProjects(): void {
+
   }
 
 

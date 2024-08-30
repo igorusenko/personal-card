@@ -6,18 +6,20 @@ import {catchError, map, of, switchMap} from "rxjs";
 
 @Injectable()
 export class ExperienceEffects {
-  loadExperience$ = createEffect(() => this.actions$.pipe(
-    ofType(loadExperience),
-    switchMap(() => this.dataService.getExperience()
-      .pipe (
-        map(experience => loadExperienceSuccess({experience})),
-        catchError(error => of(loadExperienceFailure({error})))
-        )
-    )
-  ))
-
   constructor(
     private actions$: Actions,
-    private dataService: MockDataService
+    private mockDataService: MockDataService
   ) {}
+
+  loadExperience$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadExperience),
+      switchMap(() =>
+        this.mockDataService.getExperience().pipe(
+          map(experience => loadExperienceSuccess({ experience })),
+          catchError(error => of(loadExperienceFailure({ error })))
+        )
+      )
+    )
+  );
 }

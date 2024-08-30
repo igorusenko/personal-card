@@ -4,9 +4,11 @@ import {AppState} from "../../../interfaces/state.interface";
 import {loadExperience, loadExperienceFailure, loadExperienceSuccess} from "../actions/experience-actions";
 
 export const initialState: AppState = {
-  experienceData: [],
-  loading: false,
-  error: null
+  experience: {
+      experienceData: [],
+      loading: false,
+      error: null
+  },
 };
 
 export const experienceReducer = createReducer(
